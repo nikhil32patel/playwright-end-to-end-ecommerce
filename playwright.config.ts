@@ -1,7 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
+import { junit } from 'node:test/reporters';
 
 export default defineConfig({
   timeout: 60 * 1000,   //30000 ms(30 secs)
+  //testDir: './tests/End2end',
   testDir: './tests',
   fullyParallel: true,
   //retries: process.env.CI ? 2 : 0,
@@ -10,16 +12,22 @@ export default defineConfig({
   workers: 5,
 
   reporter: [
-    ['html'],
+    ['html',{open:'on-failure','outputFolder':'html-reports'}],
     ['allure-playwright'],
-    //['dot'],
-    ['list']
+    ['list'],
+    ['line'],
+    ['dot']
+    //['junit',{outputFile:'JunitReport.xml'}],
+    //['jsno',{outputFile:'JsonReport.json'}]
+    //['./my-custome-report']
+
   ],
 
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    testIdAttribute:'data-testid',
     //headless: false,
     viewport: { width: 1280, height: 720 }, // Set default viewport size for consistency
     ignoreHTTPSErrors: true, // Ignore SSL errors if necessary
@@ -33,7 +41,7 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
+    /*{
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
       
@@ -42,7 +50,7 @@ export default defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    } 
+    }*/ 
   ],
 
 
