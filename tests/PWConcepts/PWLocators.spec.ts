@@ -17,7 +17,7 @@ DOM  is an API Interface provided by browser.
 
 import { test, expect, Locator } from "@playwright/test";
 
-test("Verify Playwright Locators", async ({ page }) => {
+test("Verify Playwright BuiltIn Locators", async ({ page }) => {
   await page.goto("https://demo.nopcommerce.com/");
 
   // 1. page.getByAltText() - identifies images (and similar elements) based on the alt attribute.
@@ -75,7 +75,7 @@ test("Verify Playwright Locators", async ({ page }) => {
 
   //await page.goto("file:///C:/Users/pavan/OneDrive/Desktop/playwrightlocators.html")
   await page.goto(
-    "file:///Z:/Study/TestingProject_JavaScript/open-cart-playwright/application/app.html",
+    "http://127.0.0.1:5500/application/app.html",
   );
 
   //const link:Locator=page.getByTitle("Home page link")
