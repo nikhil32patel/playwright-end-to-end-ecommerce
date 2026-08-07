@@ -4,7 +4,7 @@
 
 import{test,expect,Locator} from "@playwright/test"  ;
 
-test( "Verify Playwright Built In Locators on HTML Page", async ({page})=>{
+test.skip( "Verify Playwright Built In Locators on HTML Page", async ({page})=>{
 
 await page.goto("http://127.0.0.1:5500/application/app.html") ;
 

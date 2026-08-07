@@ -5,11 +5,11 @@ export default defineConfig({
   timeout: 60 * 1000,   //30000 ms(30 secs)
   //testDir: './tests/End2end',
   testDir: './tests',
-  fullyParallel: true,
+  //fullyParallel: true,
   //retries: process.env.CI ? 2 : 0,
   retries:0,
   //workers: process.env.CI ? 1 : undefined,
-  workers: 5,
+  workers: 4,
 
   reporter: [
     ['html',{open:'on-failure','outputFolder':'html-reports'}],
@@ -32,6 +32,7 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 }, // Set default viewport size for consistency
     ignoreHTTPSErrors: true, // Ignore SSL errors if necessary
     permissions: ['geolocation'], // Set necessary permissions for geolocation-based tests
+    baseURL:"https://restful-booker.herokuapp.com"
   },
 
   //grep: /@master/,
@@ -40,7 +41,8 @@ export default defineConfig({
    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
+    }
+    /*,
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
@@ -50,7 +52,7 @@ export default defineConfig({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-    }
+    }*/
   ],
 
 

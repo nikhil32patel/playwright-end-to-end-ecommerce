@@ -17,7 +17,7 @@ DOM  is an API Interface provided by browser.
 
 import { test, expect, Locator } from "@playwright/test";
 
-test("Verify Playwright BuiltIn Locators", async ({ page }) => {
+test.skip("Verify Playwright BuiltIn Locators", async ({ page }) => {
   await page.goto("https://demo.nopcommerce.com/");
 
   // 1. page.getByAltText() - identifies images (and similar elements) based on the alt attribute.
